@@ -9,9 +9,8 @@ class ProductService {
   Future<List<ProductsModel>> fetchProducts() async {
     try {
       final response = await http.get(Uri.parse(_baseUrl));
-      debugPrint(
-          'Response status: ${response.statusCode}'); // Debug: Log status code
-      debugPrint('Response body: ${response.body}'); // Debug: Log raw response
+      debugPrint('Response status: ${response.statusCode}');
+      debugPrint('Response body: ${response.body}');
       if (response.statusCode == 200) {
         final List<dynamic> productList = jsonDecode(response.body);
         return productList.map((json) => ProductsModel.fromJson(json)).toList();

@@ -7,6 +7,7 @@ import 'auth_states.dart';
 class AuthCubit extends Cubit<AuthStates> {
   final FirebaseAuth _firebaseAuth;
   final FlutterSecureStorage _secureStorage;
+
   AuthCubit({
     required FirebaseAuth firebaseAuth,
     required FlutterSecureStorage secureStorage,
@@ -122,9 +123,9 @@ class AuthCubit extends Cubit<AuthStates> {
       debugPrint("save user token is failed");
     }
   }
+
   Future<bool> isUserLoggedIn() async {
     final token = await _secureStorage.read(key: "authToken");
     return token != null;
   }
-
 }
